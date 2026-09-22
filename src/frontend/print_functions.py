@@ -80,6 +80,26 @@ def print_equivalence_constraint(constraint_name: str, signals: list[str]) -> st
     return constraint_str
 
 
+def print_difference_constraint(constraint_name: str, signals: list[str]) -> str:
+    """Generates a property requiring at least one signal to differ between instances."""
+
+    if not signals:
+        warnings.warn("Warning: Empty difference constraint generated.")
+        return ""
+
+    max_name_len = max(len(signal) for signal in signals)
+    difference_expression = " ||\n".join(
+        f"    ({INST_1}.{signal:<{max_name_len}} != {INST_2}.{signal:<{max_name_len}})"
+        for signal in signals
+    )
+
+    constraint_str = f"  property {constraint_name};\n"
+    constraint_str += difference_expression + ";\n"
+    constraint_str += "  endproperty\n"
+    constraint_str += f"  {constraint_name}_a: assume property ({constraint_name});\n\n\n"
+    return constraint_str
+
+
 def print_clocking(clock: str) -> str:
     return f"  default clocking default_clk @(posedge {clock}); endclocking\n\n"
 

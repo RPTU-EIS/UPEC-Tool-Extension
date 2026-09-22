@@ -209,7 +209,13 @@ def print_upec_dit_file(clock: str, reset: str, active_high: bool, all_signals: 
     return file_str
 
 
-def print_tcl_script_onespin(filenames: list[str], miter_filename: str, miter_name: str, property_filename: str) -> str:
+def print_tcl_script_onespin(
+    filenames: list[str],
+    miter_filename: str,
+    miter_name: str,
+    property_filename: str,
+    property_name: str = "upec_dit_unrolled",
+) -> str:
     """Generates a Tcl setup script for OneSpin that loads the design, the miter, the properties and runs them.
 
     Args:
@@ -235,14 +241,20 @@ def print_tcl_script_onespin(filenames: list[str], miter_filename: str, miter_na
     file_str += f"compile -golden\n\n"
     file_str += f"set_mode mv\n\n"
     file_str += f"read_sva -version {{sv2012}} {{$script_path/{property_filename}}}\n\n"
-    file_str += f"check checker_bind.upec_dit_unrolled_p_a\n"
-    file_str += f"check -pass checker_bind.upec_dit_unrolled_p_a\n\n"
+    file_str += f"check checker_bind.{property_name}_p_a\n"
+    file_str += f"check -pass checker_bind.{property_name}_p_a\n\n"
 
     return file_str
 
 
-def print_tcl_script_jg(filenames: list[str], miter_filename: str, miter_name: str, property_filename: str,
-                        clock: str) -> str:
+def print_tcl_script_jg(
+    filenames: list[str],
+    miter_filename: str,
+    miter_name: str,
+    property_filename: str,
+    clock: str,
+    property_name: str = "upec_dit_unrolled",
+) -> str:
     """Generates a Tcl setup script for JasperGold that loads the design, the miter, the properties and runs them.
 
     Args:
@@ -264,7 +276,7 @@ def print_tcl_script_jg(filenames: list[str], miter_filename: str, miter_name: s
     file_str += f"elaborate -top {miter_name}\n\n"
     file_str += f"clock {clock}\n\n"
     file_str += f"reset -none\n\n"
-    file_str += f"prove -property {miter_name}.checker_bind.upec_dit_unrolled_p_a\n"
-    file_str += f"prove -property {miter_name}.checker_bind.upec_dit_unrolled_p_a:precondition1\n\n"
+    file_str += f"prove -property {miter_name}.checker_bind.{property_name}_p_a\n"
+    file_str += f"prove -property {miter_name}.checker_bind.{property_name}_p_a:precondition1\n\n"
 
     return file_str

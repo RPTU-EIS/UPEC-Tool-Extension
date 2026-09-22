@@ -16,6 +16,8 @@ from src.frontend.plugins.shortest_path import shortest_path
 from src.frontend.plugins.design_overview import design_overview
 from src.frontend.plugins.downloads import downloads
 from src.frontend.plugins.upec_dit import upec_dit
+from src.frontend.plugins.upec_ai import upec_ai
+from src.frontend.plugins.scientific_paper import scientific_paper
 from src.frontend.plugins.fan_analysis import fan_analysis
 from src.frontend.plugins.counterexample import counterexample
 from streamlit_option_menu import option_menu
@@ -33,6 +35,8 @@ else:
             "Fan Analysis",
             "Shortest Path",
             "UPEC-DIT",
+            "UPEC-AI",
+            "Scientific Paper",
             "Trojan Detection",
             "Counterexample",
             "Downloads"
@@ -42,6 +46,8 @@ else:
             "diagram-3",
             "signpost",
             "stopwatch",
+            "robot",
+            "journal-text",
             "bug",
             "alt",
             "download"
@@ -68,5 +74,9 @@ else:
             trojan_detection()
         case "UPEC-DIT":
             upec_dit()
+        case "UPEC-AI":
+            upec_ai()
+        case "Scientific Paper":
+            scientific_paper()
         case "Downloads":
             downloads()
