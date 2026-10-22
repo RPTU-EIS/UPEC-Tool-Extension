@@ -60,6 +60,15 @@ After providing high-level interface information, the tool generates the computa
 The user simply runs the script from the model checker, which returns either a proof or a counterexample.
 
 
+### 🧠 UPEC-AI
+
+UPEC-AI checks for parameter-dependent timing side channels in hardware accelerators that could expose model parameters.
+The **End-to-End Proof** workflow is included: users select the parameter inputs, timing/control outputs, clock, reset, and sequential depth, then download a proof package containing the two-instance computational model, SVA property, RTL files, and setup scripts for JasperGold and OneSpin.
+The generated property checks that the selected control outputs remain equivalent when parameter inputs differ and the remaining inputs are equal. Run the generated scripts in a model checker to obtain a proof or counterexample.
+
+The **Layer-Wise Proof** and **Single-Cycle Proof** workflows are still in progress and are not yet implemented.
+
+
 ### 🪲 Trojan Detection
 
 This tab implements a formal verification method that identifies stealthy hardware trojans without requiring a golden (trusted) reference design or specification.
