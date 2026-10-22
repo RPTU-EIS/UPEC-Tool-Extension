@@ -62,7 +62,7 @@ The user simply runs the script from the model checker, which returns either a p
 
 ### 🧠 UPEC-AI
 
-UPEC-AI checks for parameter-dependent timing side channels in hardware accelerators that could expose model parameters.
+UPEC-AI checks for parameter-dependent timing side channels in hardware accelerators that could expose model parameters[^5].
 The **End-to-End Proof** workflow is included: users select the parameter inputs, timing/control outputs, clock, reset, and sequential depth, then download a proof package containing the two-instance computational model, SVA property, RTL files, and setup scripts for JasperGold and OneSpin.
 The generated property checks that the selected control outputs remain equivalent when parameter inputs differ and the remaining inputs are equal. Run the generated scripts in a model checker to obtain a proof or counterexample.
 
