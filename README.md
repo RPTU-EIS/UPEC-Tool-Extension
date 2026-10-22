@@ -123,3 +123,7 @@ In Proceedings of the 62nd ACM/IEEE Design Automation Conference (DAC), San Fran
 [^4]: A. L. Duque Antón, J. Müller, L. Deutschmann, M. R. Fadiheh, D. Stoffel, W. Kunz:
 [A Golden-Free Formal Method for Trojan Detection in Non-Interfering Accelerators](https://ieeexplore.ieee.org/abstract/document/10546664). 
 In Proceedings of the 2024 Design, Automation & Test in Europe Conference & Exhibition (DATE), Valencia, Spain, 2024.
+
+[^5]: M. S. Ali et al.:
+[Security Risks in AI Accelerators: Detecting RTL Vulnerabilities to Model Theft with Formal Verification](https://doi.org/10.1109/ETS63895.2025.11049644).
+In Proceedings of the 2025 IEEE European Test Symposium (ETS), Tallinn, Estonia, pp. 1–6, 2025.
